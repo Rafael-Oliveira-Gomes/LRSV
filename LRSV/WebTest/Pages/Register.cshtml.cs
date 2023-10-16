@@ -7,15 +7,15 @@ using System.Xml.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebTest.Model;
 using WebTest.ViewModels;
 
 namespace WebTest.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
-
+        private readonly UserManager<ApplicationUser> userManager; 
+        private readonly SignInManager<ApplicationUser> signInManager;
         [BindProperty]
         public Register Model { get; set; }
         public class Register
@@ -24,8 +24,12 @@ namespace WebTest.Pages
             [Display(Name = "Email Address")]
             [EmailAddress]
             public string Email { get; set; }
-            [Display(Name = "Nome do Usuário")] // Adicione uma propriedade para o nome do usuário
-            public string UserName { get; set; }
+
+            [Display(Name = "Nome do Usuário")]
+            public string Nome { get; set; }
+
+            [Display(Name = "Cargo")]
+            public string Cargo { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -37,11 +41,12 @@ namespace WebTest.Pages
             public string ConfirmPassword { get; set; }
         }
 
-        public RegisterModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
+
         public void OnGet()
         {
         }
@@ -50,11 +55,13 @@ namespace WebTest.Pages
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser()
+                var user = new ApplicationUser()
                 {
 
                     UserName = Model.Email,
-                    Email = Model.Email
+                    Email = Model.Email,
+                    Nome = Model.Nome,
+                    Cargo = Model.Cargo
                 };
 
                 var result = await userManager.CreateAsync(user, Model.Password);

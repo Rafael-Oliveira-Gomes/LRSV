@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebTest.Model
 {
-    public class AuthDbContext: IdentityDbContext
+    public class AuthDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AuthDbContext(DbContextOptions<AuthDbContext> options): base(options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
         }
 

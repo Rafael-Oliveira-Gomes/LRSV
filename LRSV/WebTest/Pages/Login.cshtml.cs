@@ -5,18 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebTest.Model;
 using WebTest.ViewModels;
 
 namespace WebTest.Pages
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
         [BindProperty]
         public Login Model { get; set; }
 
-        public LoginModel(SignInManager<IdentityUser> signInManager)
+        public LoginModel(SignInManager<ApplicationUser> signInManager)
         {
             this.signInManager = signInManager;
         }
@@ -32,7 +33,7 @@ namespace WebTest.Pages
                 var identityResult = await signInManager.PasswordSignInAsync(Model.Email, Model.Password, Model.RelembreMe, false);
                 if (identityResult.Succeeded)
                 {
-                    if(returnUrl == null || returnUrl == "/")
+                    if (returnUrl == null || returnUrl == "/")
                     {
                         return RedirectToPage("Ponto");
                     }

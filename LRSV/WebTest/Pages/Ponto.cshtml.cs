@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System;
 using WebTest.Interface;
+using WebTest.Model;
 
 namespace WebTest.Pages
 {
     public class PontoModel : PageModel
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly IPontoService pontoService;
 
-        public PontoModel(UserManager<IdentityUser> userManager, IPontoService pontoService)
+        public PontoModel(UserManager<ApplicationUser> userManager, IPontoService pontoService)
         {
             this.userManager = userManager;
             this.pontoService = pontoService;

@@ -10,6 +10,7 @@ namespace WebTest.Model
         public TimeSpan HorarioEntrada { get; set; }
         public TimeSpan? HorarioSaida { get; set; }
         public string? AuthDbContextUserId { get; set; }
+        public string NomeUsuario { get; set; }
         public virtual AuthDbContext AuthDbContext { get; set; }
     }
 }

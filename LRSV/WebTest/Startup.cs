@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using WebTest.Interface;
 using WebTest.Model;
 using WebTest.Repository;
-using WebTest.Service;
 
 namespace WebTest
 {
@@ -29,8 +27,9 @@ namespace WebTest
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AuthDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<AuthDbContext>()
+    .AddUserManager<UserManager<ApplicationUser>>();
             services.AddRazorPages();
 
             services.ConfigureApplicationCookie(config =>
