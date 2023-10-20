@@ -15,5 +15,6 @@ namespace WebTest.Interface
         Task<Ponto> CreatePonto(Ponto ponto);
         Task<Ponto> GetUltimoPontoByUserAndDay(string userId, DateTime dia);
         Task<List<Ponto>> GetPontosByFuncionarioAndMonth(string userId, int month, int year);
+        Task<List<Ponto>> GetAllPontos();
     }
 }

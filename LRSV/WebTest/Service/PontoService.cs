@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System;
 using WebTest.Interface;
 using WebTest.Model;
+using System.Collections.Generic;
 
 public class PontoService : IPontoService
 {
@@ -14,6 +15,12 @@ public class PontoService : IPontoService
         _pontoRepository = pontoRepository;
         _userManager = userManager;
     }
+
+    public async Task<List<Ponto>> GetAllPontos()
+    {
+        return await _pontoRepository.GetAllPontos();
+    }
+
 
     public async Task<bool> AdicionarPonto(string userId)
     {

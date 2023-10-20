@@ -7,5 +7,6 @@ namespace WebTest.Interface
     public interface IPontoService
     {
         Task<bool> AdicionarPonto(string userId);
+        Task<List<Ponto>> GetAllPontos();
     }
 }

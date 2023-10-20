@@ -16,6 +16,12 @@ namespace WebTest.Repository
         {
             _context = context;
         }
+
+        public async Task<List<Ponto>> GetAllPontos()
+        {
+            return await _context.Ponto.OrderBy(p => p.Id).ToListAsync();
+        }
+
         public async Task<Ponto> CreatePonto(Ponto ponto)
         {
             var ret = await _context.Ponto.AddAsync(ponto);
