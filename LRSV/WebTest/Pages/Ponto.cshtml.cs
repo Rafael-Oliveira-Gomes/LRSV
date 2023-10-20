@@ -26,16 +26,14 @@ namespace WebTest.Pages
         [HttpPost]
         public async Task<IActionResult> OnPost()
         {
-            // Verifique se o usuário está autenticado
             var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return RedirectToPage("/Login"); // Redirecione para a página de login se o usuário não estiver autenticado
+                return RedirectToPage("/Login");
             }
 
             try
             {
-                // Chame o serviço de bater ponto
                 var userId = userManager.GetUserId(User);
                 await pontoService.AdicionarPonto(userId);
                 TempData["Message"] = "Ponto registrado com sucesso!";

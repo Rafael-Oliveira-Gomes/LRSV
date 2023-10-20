@@ -1,0 +1,23 @@
+﻿@page
+@model WebTest.Pages.AdminModel
+@{
+    ViewData["Title"] = "Painel de Administração";
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Verificar Todos os Funcionários</a>
+                <a asp-page="Register" class="list-group-item list-group-item-action">Registrar Funcionário</a>
+                <a href="#" class="list-group-item list-group-item-action">Ver Férias</a>
+                <a href="#" class="list-group-item list-group-item-action">Relatórios</a>
+                <a href="#" class="list-group-item list-group-item-action">Alteração no Espelho de Ponto</a>
+                <a href="#" class="list-group-item list-group-item-action">Transmitir Arquivos</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+        </div>
+    </div>
+</div>

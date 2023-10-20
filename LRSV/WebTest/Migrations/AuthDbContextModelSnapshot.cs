@@ -153,11 +153,23 @@ namespace WebTest.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("Agencia")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Banco")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Cargo")
                         .HasColumnType("longtext");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Conta")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cpf")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Email")
@@ -166,6 +178,18 @@ namespace WebTest.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Endereco")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Genero")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HorarioTrabalho")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("JornadaSemanal")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -193,7 +217,13 @@ namespace WebTest.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Telefone")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")

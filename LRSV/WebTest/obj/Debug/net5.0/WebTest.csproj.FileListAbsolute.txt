@@ -206,3 +206,4 @@ C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\W
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\WebTest.genruntimeconfig.cache
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\ref\WebTest.dll
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\Ponto.cshtml.g.cs
+C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\Admin.cshtml.g.cs

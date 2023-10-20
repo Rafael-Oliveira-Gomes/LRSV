@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -39,8 +40,35 @@ namespace WebTest.Pages
             [DataType(DataType.Password)]
             [Display(Name = "Confirme sua Senha")]
             public string ConfirmPassword { get; set; }
-        }
 
+            [Display(Name = "Salario")]
+            public decimal Salario { get; set; }
+
+            public string Cpf { get; set; }
+            public string Genero { get; set; }
+
+            [Display(Name = "Telefone")]
+            public string Telefone { get; set; }
+
+            [Display(Name = "Endereço")]
+            public string Endereco { get; set; }
+
+            [Display(Name = "Horario de Trabalho")]
+            public string HorarioTrabalho { get; set; }
+
+            [Display(Name = "Jornada Semanal")]
+            public int JornadaSemanal { get; set; }
+
+            [Display(Name = "Banco")]
+            public string Banco { get; set; }
+
+            [Display(Name = "Agência")]
+            public int Agencia { get; set; }
+
+            [Display(Name = "Conta")]
+            public int Conta { get; set; }
+        }
+     
         public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
@@ -61,14 +89,24 @@ namespace WebTest.Pages
                     UserName = Model.Email,
                     Email = Model.Email,
                     Nome = Model.Nome,
-                    Cargo = Model.Cargo
+                    Cargo = Model.Cargo,
+                    Salario = Model.Salario,
+                    Cpf = Model.Cpf,
+                    Genero = Model.Genero,
+                    Telefone = Model.Telefone,
+                    Endereco = Model.Endereco,
+                    HorarioTrabalho = Model.HorarioTrabalho,
+                    JornadaSemanal = Model.JornadaSemanal,
+                    Banco = Model.Banco,
+                    Agencia = Model.Agencia,
+                    Conta = Model.Conta
                 };
 
                 var result = await userManager.CreateAsync(user, Model.Password);
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, false);
-                    return RedirectToPage("Index");
+                    return RedirectToPage("Admin");
                 }
 
                 foreach(var error in result.Errors)

@@ -12,7 +12,7 @@
                 <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="mb-3">
-                    <label class="form-label" asp-for="Model.Nome">Nome</label>
+                    <label class="form-label" asp-for="Model.Nome">Nome do Usuário</label>
                     <input type="text" asp-for="Model.Nome" class="form-control" />
                     <span asp-validation-for="Model.Nome" class="text-danger"></span>
                 </div>
@@ -23,9 +23,8 @@
                     <span asp-validation-for="Model.Cargo" class="text-danger"></span>
                 </div>
 
-
                 <div class="mb-3">
-                    <label class="form-label" asp-for="Model.Email">Email</label>
+                    <label class="form-label" asp-for="Model.Email">Email Address</label>
                     <input type="email" asp-for="Model.Email" class="form-control" />
                     <span asp-validation-for="Model.Email" class="text-danger"></span>
                 </div>
@@ -43,7 +42,57 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Registre</button>
+                    <label class="form-label" asp-for="Model.Salario">Salário</label>
+                    <input type="text" asp-for="Model.Salario" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Cpf">CPF</label>
+                    <input type="text" asp-for="Model.Cpf" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Genero">Gênero</label>
+                    <input type="text" asp-for="Model.Genero" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Telefone">Telefone</label>
+                    <input type="text" asp-for="Model.Telefone" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Endereco">Endereço</label>
+                    <input type="text" asp-for="Model.Endereco" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.HorarioTrabalho">Horário de Trabalho</label>
+                    <input type="text" asp-for="Model.HorarioTrabalho" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.JornadaSemanal">Jornada Semanal</label>
+                    <input type="text" asp-for="Model.JornadaSemanal" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Banco">Banco</label>
+                    <input type="text" asp-for="Model.Banco" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Agencia">Agência</label>
+                    <input type="text" asp-for="Model.Agencia" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model.Conta">Conta</label>
+                    <input type="text" asp-for="Model.Conta" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
             </form>
         </div>

@@ -27,7 +27,7 @@ namespace WebTest.Pages
 
         public IActionResult OnPostDontLogoutAsync()
         {
-            return RedirectToPage("Index");
+            return RedirectToPage("Login");
         }
     }
 }
