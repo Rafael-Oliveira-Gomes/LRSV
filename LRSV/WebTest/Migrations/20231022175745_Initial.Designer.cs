@@ -9,7 +9,7 @@ using WebTest.Model;
 namespace WebTest.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20231022021640_Initial")]
+    [Migration("20231022175745_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -219,8 +219,8 @@ namespace WebTest.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<decimal>("Salario")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int>("Salario")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
@@ -247,6 +247,34 @@ namespace WebTest.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("WebTest.Model.Beneficios", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("NomeUsuario")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Va")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Vr")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Vt")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Beneficios");
+                });
+
             modelBuilder.Entity("WebTest.Model.Ferias", b =>
                 {
                     b.Property<int?>("Id")
@@ -269,6 +297,34 @@ namespace WebTest.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ferias");
+                });
+
+            modelBuilder.Entity("WebTest.Model.Pagamentos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("NomeUsuario")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("PagamentoAdicional")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SalarioBruto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SalarioLiquido")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Pagamentos");
                 });
 
             modelBuilder.Entity("WebTest.Model.Ponto", b =>
@@ -346,6 +402,27 @@ namespace WebTest.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebTest.Model.Beneficios", b =>
+                {
+                    b.HasOne("WebTest.Model.ApplicationUser", null)
+                        .WithMany("Beneficios")
+                        .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("WebTest.Model.Pagamentos", b =>
+                {
+                    b.HasOne("WebTest.Model.ApplicationUser", null)
+                        .WithMany("Pagamentos")
+                        .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("WebTest.Model.ApplicationUser", b =>
+                {
+                    b.Navigation("Beneficios");
+
+                    b.Navigation("Pagamentos");
                 });
 #pragma warning restore 612, 618
         }

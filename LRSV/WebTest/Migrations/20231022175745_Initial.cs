@@ -40,7 +40,7 @@ namespace WebTest.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Cargo = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Salario = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Salario = table.Column<int>(type: "int", nullable: false),
                     Cpf = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Genero = table.Column<string>(type: "longtext", nullable: true)
@@ -251,6 +251,58 @@ namespace WebTest.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Beneficios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Va = table.Column<int>(type: "int", nullable: false),
+                    Vt = table.Column<int>(type: "int", nullable: false),
+                    Vr = table.Column<int>(type: "int", nullable: false),
+                    NomeUsuario = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ApplicationUserId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Beneficios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Beneficios_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Pagamentos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    SalarioBruto = table.Column<int>(type: "int", nullable: false),
+                    SalarioLiquido = table.Column<int>(type: "int", nullable: false),
+                    PagamentoAdicional = table.Column<int>(type: "int", nullable: false),
+                    NomeUsuario = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ApplicationUserId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pagamentos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pagamentos_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -287,6 +339,16 @@ namespace WebTest.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Beneficios_ApplicationUserId",
+                table: "Beneficios",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pagamentos_ApplicationUserId",
+                table: "Pagamentos",
+                column: "ApplicationUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -307,7 +369,13 @@ namespace WebTest.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Beneficios");
+
+            migrationBuilder.DropTable(
                 name: "Ferias");
+
+            migrationBuilder.DropTable(
+                name: "Pagamentos");
 
             migrationBuilder.DropTable(
                 name: "Ponto");

@@ -210,3 +210,6 @@ C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\R
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\PontoList.cshtml.g.cs
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\Pagamento.cshtml.g.cs
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\FeriasAdmin.cshtml.g.cs
+C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\BeneficiosAdmin.cshtml.g.cs
+C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\SalarioAdmin.cshtml.g.cs
+C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\Relatorios.cshtml.g.cs

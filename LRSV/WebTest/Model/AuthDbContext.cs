@@ -11,5 +11,7 @@ namespace WebTest.Model
         }
         public DbSet<Ferias> Ferias { get; set; }
         public DbSet<Ponto> Ponto { get; set; }
+        public DbSet<Beneficios> Beneficios { get; set; }
+        public DbSet<Pagamentos> Pagamentos { get; set; }
     }
 }

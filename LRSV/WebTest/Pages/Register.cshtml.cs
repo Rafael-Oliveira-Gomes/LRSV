@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using WebTest.Model;
 using WebTest.ViewModels;
 
@@ -17,6 +18,8 @@ namespace WebTest.Pages
     {
         private readonly UserManager<ApplicationUser> userManager; 
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly AuthDbContext _dbContext;
+
         [BindProperty]
         public Register Model { get; set; }
         public class Register
@@ -42,7 +45,7 @@ namespace WebTest.Pages
             public string ConfirmPassword { get; set; }
 
             [Display(Name = "Salario")]
-            public decimal Salario { get; set; }
+            public int Salario { get; set; }
 
             public string Cpf { get; set; }
             public string Genero { get; set; }
@@ -68,12 +71,14 @@ namespace WebTest.Pages
             [Display(Name = "Conta")]
             public int Conta { get; set; }
         }
-     
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AuthDbContext dbContext)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            _dbContext = dbContext;
         }
+
 
         public void OnGet()
         {
@@ -85,7 +90,6 @@ namespace WebTest.Pages
             {
                 var user = new ApplicationUser()
                 {
-
                     UserName = Model.Email,
                     Email = Model.Email,
                     Nome = Model.Nome,
@@ -105,17 +109,27 @@ namespace WebTest.Pages
                 var result = await userManager.CreateAsync(user, Model.Password);
                 if (result.Succeeded)
                 {
+                    var salario = new Pagamentos
+                    {
+                        SalarioBruto = Model.Salario,
+                        SalarioLiquido = Model.Salario,
+                        NomeUsuario = user.Nome,
+                    };
+
+                    _dbContext.Pagamentos.Add(salario);
+                    await _dbContext.SaveChangesAsync();
+
                     await signInManager.SignInAsync(user, false);
                     return RedirectToPage("Admin");
                 }
 
-                foreach(var error in result.Errors)
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
 
             return Page();
-        } 
+        }
     }
 }
