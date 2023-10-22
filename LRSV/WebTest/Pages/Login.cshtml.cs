@@ -30,7 +30,7 @@ namespace WebTest.Pages
         {
             if (ModelState.IsValid)
             {
-                if (Model.Email == "admin@lrsv.com.br" && Model.Password == "admin")
+                if (Model.Email == "admin@lrsv.com.br" && Model.Password == "Ab!123")
                 {
                     return RedirectToPage("Admin");
                 }

@@ -22,7 +22,7 @@ namespace WebTest
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection"); // Use the correct connection string name
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AuthDbContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );

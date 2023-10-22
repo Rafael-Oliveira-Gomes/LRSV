@@ -9,7 +9,7 @@ using WebTest.Model;
 namespace WebTest.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20231020151223_Initial")]
+    [Migration("20231022021640_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -245,6 +245,30 @@ namespace WebTest.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("WebTest.Model.Ferias", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("NomeUsuario")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ferias");
                 });
 
             modelBuilder.Entity("WebTest.Model.Ponto", b =>

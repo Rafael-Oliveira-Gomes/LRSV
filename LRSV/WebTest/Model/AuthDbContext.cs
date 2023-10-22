@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace WebTest.Model
 {
@@ -8,7 +9,7 @@ namespace WebTest.Model
         public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
         }
-
+        public DbSet<Ferias> Ferias { get; set; }
         public DbSet<Ponto> Ponto { get; set; }
     }
 }
