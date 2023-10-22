@@ -213,3 +213,5 @@ C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\R
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\BeneficiosAdmin.cshtml.g.cs
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\SalarioAdmin.cshtml.g.cs
 C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\Relatorios.cshtml.g.cs
+C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\HoleritesAdmin.cshtml.g.cs
+C:\Users\rafael.gomes\Desktop\rafa\Faculdade\Pim\LRSV\WebTest\obj\Debug\net5.0\Razor\Pages\FeriasColaborador.cshtml.g.cs

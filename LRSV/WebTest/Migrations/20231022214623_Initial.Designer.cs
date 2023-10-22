@@ -9,7 +9,7 @@ using WebTest.Model;
 namespace WebTest.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20231022175745_Initial")]
+    [Migration("20231022214623_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
