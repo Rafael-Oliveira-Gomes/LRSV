@@ -13,13 +13,15 @@ namespace WebTest.Pages
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager; 
 
         [BindProperty]
         public Login Model { get; set; }
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) 
         {
             this.signInManager = signInManager;
+            this.userManager = userManager; 
         }
 
         public void OnGet()
@@ -35,20 +37,30 @@ namespace WebTest.Pages
                     return RedirectToPage("Admin");
                 }
 
-                var identityResult = await signInManager.PasswordSignInAsync(Model.Email, Model.Password, Model.RelembreMe, false);
-                if (identityResult.Succeeded)
-                {
-                    if (returnUrl == null || returnUrl == "/")
-                    {
-                        return RedirectToPage("Ponto");
-                    }
-                    else
-                    {
-                        return RedirectToPage(returnUrl);
-                    }
-                }
+                var user = await userManager.FindByEmailAsync(Model.Email);
 
-                ModelState.AddModelError("", "Nome do usuário ou a senha está incorreta!");
+                if (user != null && user.Situacao == "Ativo")
+                {
+                    var identityResult = await signInManager.PasswordSignInAsync(Model.Email, Model.Password, Model.RelembreMe, false);
+
+                    if (identityResult.Succeeded)
+                    {
+                        if (returnUrl == null || returnUrl == "/")
+                        {
+                            return RedirectToPage("Ponto");
+                        }
+                        else
+                        {
+                            return RedirectToPage(returnUrl);
+                        }
+                    }
+
+                    ModelState.AddModelError("", "Nome do usuário ou a senha está incorreta!");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "O usuário não está ativo.");
+                }
             }
 
             return Page();

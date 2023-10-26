@@ -13,5 +13,7 @@ namespace WebTest.Model
         public DbSet<Ponto> Ponto { get; set; }
         public DbSet<Beneficios> Beneficios { get; set; }
         public DbSet<Pagamentos> Pagamentos { get; set; }
+        public DbSet<Chamado> Chamados { get; set; }
+        public DbSet<Rescisao> Rescisoes { get; set;}
     }
 }

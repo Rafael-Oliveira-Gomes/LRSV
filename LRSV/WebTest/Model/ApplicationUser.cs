@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace WebTest.Model
 {
@@ -18,12 +19,15 @@ namespace WebTest.Model
         public string Banco { get; set; }
         public int Agencia { get; set; }
         public int Conta { get; set; }
+        public string Situacao { get; set; }
         public virtual ICollection<Beneficios> Beneficios { get; set; }
         public virtual ICollection<Pagamentos> Pagamentos { get; set; }
+        public virtual ICollection<Chamado> Chamados { get; set; }
         public ApplicationUser()
         {
             Beneficios = new List<Beneficios>();
             Pagamentos = new List<Pagamentos>();
+            Chamados = new List<Chamado>();
         }
     }
 }

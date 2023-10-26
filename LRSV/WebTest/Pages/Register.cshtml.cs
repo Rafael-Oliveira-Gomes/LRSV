@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -70,6 +71,7 @@ namespace WebTest.Pages
 
             [Display(Name = "Conta")]
             public int Conta { get; set; }
+            public string Situacao { get; set; }
         }
 
         public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AuthDbContext dbContext)
@@ -103,7 +105,8 @@ namespace WebTest.Pages
                     JornadaSemanal = Model.JornadaSemanal,
                     Banco = Model.Banco,
                     Agencia = Model.Agencia,
-                    Conta = Model.Conta
+                    Conta = Model.Conta,
+                    Situacao = "Ativo"
                 };
 
                 var result = await userManager.CreateAsync(user, Model.Password);
